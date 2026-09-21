@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102c36">
+  <title>首尔 · 釜山 7日旅行手册</title>
+  <style>
+    :root { --ink:#102c36; --muted:#6c7c80; --paper:#f7f3ea; --card:#fffdf8; --line:#dfe4de; --coral:#e8694f; --teal:#0d8f88; --blue:#4584bd; --yellow:#f2b84b; --night:#102c36; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family: ui-rounded, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; line-height:1.55; }
+    a { color:inherit; }
+    .wrap { width:min(720px, 100%); margin:auto; padding:18px 16px 70px; }
+    .topline { display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:12px; letter-spacing:.04em; }
+    h1 { margin:5px 0 2px; font-size:30px; letter-spacing:-.02em; }
+    h2 { margin:0; font-size:20px; }
+    h3 { margin:0; font-size:16px; }
+    .subtitle { color:var(--muted); font-size:13px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:8px; box-shadow:0 8px 24px rgba(24,48,51,.06); }
+    .focus { margin-top:18px; padding:18px; color:#fff; background:var(--night); position:relative; overflow:hidden; }
+    .focus:after { content:""; position:absolute; right:-30px; bottom:-48px; width:160px; height:160px; border:1px solid rgba(255,255,255,.2); border-radius:50%; }
+    .eyebrow { font-size:12px; color:#b8d9d2; text-transform:uppercase; letter-spacing:.08em; }
+    .focus-title { display:flex; justify-content:space-between; gap:12px; align-items:end; margin-top:5px; }
+    .focus-title strong { font-size:23px; }
+    .status { font-size:12px; color:#ffd789; white-space:nowrap; }
+    .countdown { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:17px; }
+    .count { border-top:1px solid rgba(255,255,255,.28); padding-top:7px; }
+    .count b { display:block; font-size:29px; line-height:1; font-variant-numeric:tabular-nums; }
+    .count span { color:#b8d9d2; font-size:11px; }
+    section { margin-top:26px; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; margin-bottom:10px; }
+    .section-head p { margin:0; font-size:12px; color:var(--muted); }
+    .map-card { padding:10px; overflow:hidden; }
+    .map-card svg { display:block; width:100%; height:auto; border:1px solid #e4dfd3; background:#f5f0e5; }
+    .map-legend { display:flex; flex-wrap:wrap; gap:10px; padding:11px 3px 2px; font-size:12px; color:var(--muted); }
+    .dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:4px; }
+    .booking { padding:15px; margin-top:10px; }
+    .booking-top { display:flex; justify-content:space-between; gap:12px; }
+    .tag { display:inline-flex; align-items:center; padding:3px 7px; border-radius:99px; background:#e8f4ef; color:#087d72; font-size:11px; white-space:nowrap; }
+    .tag.warn { background:#fff2dc; color:#9a5a00; }
+    .meta { color:var(--muted); font-size:12px; margin-top:4px; }
+    .place { margin-top:9px; padding-top:9px; border-top:1px dashed var(--line); font-size:13px; }
+    .place a { text-decoration:none; color:var(--teal); }
+    .contact { color:var(--muted); font-size:12px; margin-top:3px; }
+    .days { display:none; gap:10px; }
+    details.day { background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    details.day[open] { box-shadow:0 8px 24px rgba(24,48,51,.05); }
+    summary { list-style:none; cursor:pointer; padding:14px 15px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    summary::-webkit-details-marker { display:none; }
+    .day-label { display:flex; align-items:center; gap:10px; }
+    .day-num { font-size:23px; font-weight:800; line-height:1; }
+    .day-date { font-size:13px; color:var(--muted); }
+    .chev { color:var(--muted); font-size:18px; }
+    .day-body { padding:0 15px 15px; }
+    .day-map { background:#f1f5ed; border:1px solid #dde7db; padding:10px; margin-bottom:12px; }
+    .route-note { font-size:12px; color:var(--muted); margin:0 0 8px; }
+    .route-btn { display:block; text-align:center; background:var(--ink); color:#fff; text-decoration:none; padding:8px 10px; border-radius:5px; font-size:12px; }
+    .timeline { border-left:2px solid #d8e2dc; margin-left:6px; }
+    .event { display:grid; grid-template-columns:72px 1fr; gap:12px; position:relative; padding:0 0 14px 14px; }
+    .event:last-child { padding-bottom:0; }
+    .event:before { content:""; position:absolute; left:-6px; top:5px; width:9px; height:9px; border-radius:50%; background:var(--coral); border:2px solid var(--paper); }
+    .time { font-size:12px; font-weight:700; color:var(--coral); font-variant-numeric:tabular-nums; }
+    .event p { margin:0; font-size:13px; }
+    .event small { display:block; color:var(--muted); font-size:11px; margin-top:2px; }
+    .reserve { color:#a35e00; font-size:11px; font-weight:700; }
+    .list { padding:14px 17px; }
+    .list li { margin:8px 0; padding-left:2px; font-size:13px; }
+    .list li::marker { color:var(--teal); }
+    .risk { border-left:3px solid var(--yellow); padding:10px 12px; background:#fff7e7; margin-top:10px; font-size:12px; color:#6c501d; }
+    .source-note { margin:8px 0 0; color:var(--muted); font-size:11px; }
+    .booking-tabs { display:flex; gap:6px; overflow:auto; margin:0 0 10px; padding-bottom:2px; }
+    .booking-tab { border:1px solid var(--line); background:var(--card); color:var(--muted); border-radius:99px; padding:7px 12px; font:inherit; font-size:12px; white-space:nowrap; cursor:pointer; }
+    .booking-tab.active { background:var(--ink); border-color:var(--ink); color:#fff; }
+    .booking.is-hidden { display:none; }
+    .calendar { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px; }
+    .month + .month { margin-top:18px; }
+    .month-title { display:flex; justify-content:space-between; align-items:center; margin-bottom:9px; }
+    .month-title strong { font-size:15px; }
+    .month-title span { color:var(--muted); font-size:11px; }
+    .weekdays, .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:5px; }
+    .weekday { text-align:center; color:var(--muted); font-size:10px; padding:3px 0; }
+    .calendar-cell { min-height:58px; border:1px solid transparent; background:#f7f8f3; border-radius:5px; padding:6px; text-align:left; cursor:pointer; color:var(--ink); }
+    .calendar-grid, .calendar-cell { min-width:0; }
+    .calendar-cell { width:100%; overflow:hidden; }
+    .calendar-cell.empty { visibility:hidden; cursor:default; }
+    .calendar-cell.trip { border-color:#b7d8cd; background:#edf7f2; }
+    .calendar-cell .date { display:block; font-size:12px; font-weight:800; }
+    .calendar-cell .day-code { display:block; color:var(--coral); font-size:10px; font-weight:700; margin-top:6px; }
+    .calendar-cell .day-name { display:block; color:var(--muted); font-size:10px; line-height:1.2; white-space:normal; overflow-wrap:anywhere; }
+    .seller { margin-top:7px; color:var(--muted); font-size:11px; }
+    .ticket-rows { display:grid; gap:7px; margin-top:6px; }
+    .ticket-row { display:grid; grid-template-columns:74px 1fr; gap:8px; padding:7px 0; border-top:1px dashed var(--line); font-size:12px; }
+    .ticket-row b { color:var(--coral); }
+    .appointment-list { display:grid; gap:6px; margin-top:6px; }
+    .appointment-row { display:flex; justify-content:space-between; gap:8px; padding:7px 0; border-top:1px dashed var(--line); font-size:12px; }
+    .appointment-row b { color:var(--coral); }
+    .qr-slot { color:var(--muted); font-size:11px; }
+    .day-modal { display:none; position:fixed; inset:0; z-index:10; background:rgba(16,44,54,.48); padding:20px 14px; align-items:flex-end; justify-content:center; }
+    .day-modal.open { display:flex; }
+    .modal-panel { width:min(680px,100%); max-height:88vh; overflow:auto; background:var(--paper); border-radius:10px 10px 0 0; padding:16px; box-shadow:0 -16px 40px rgba(0,0,0,.2); }
+    .modal-head { display:flex; justify-content:space-between; align-items:start; gap:12px; margin-bottom:10px; }
+    .modal-close { border:0; background:transparent; color:var(--muted); font-size:25px; cursor:pointer; line-height:1; }
+    .modal-content .day-body { padding:0; }
+    body.modal-open { overflow:hidden; }
+    .todo-list { list-style:none; margin:0; padding:0; }
+    .todo-list li { margin:0; padding:8px 0; border-bottom:1px dashed var(--line); }
+    .todo-list li:last-child { border-bottom:0; }
+    .todo-label { display:flex; gap:9px; align-items:flex-start; cursor:pointer; font-size:13px; }
+    .todo-label input { width:18px; height:18px; flex:0 0 auto; margin:1px 0 0; accent-color:var(--teal); }
+    .todo-label input:checked + span { color:var(--muted); text-decoration:line-through; }
+    .steps { counter-reset:step; padding:14px 17px; }
+    .steps p { margin:0 0 10px; font-size:13px; }
+    .steps p:last-child { margin-bottom:0; }
+    .steps p:before { counter-increment:step; content:counter(step); display:inline-grid; place-items:center; width:21px; height:21px; margin-right:7px; border-radius:50%; background:var(--teal); color:#fff; font-size:11px; font-weight:700; }
+    .steps .source-note:before { content:none; counter-increment:none; display:none; }
+    .keyline { display:inline-block; padding:2px 6px; background:#eef6f2; color:#087d72; border-radius:4px; font-size:11px; }
+    .tip-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .tip { padding:13px; }
+    .tip p { margin:4px 0 0; color:var(--muted); font-size:12px; }
+    .foot { margin-top:28px; color:var(--muted); font-size:11px; text-align:center; }
+    @media (max-width:430px) { h1{font-size:27px}.focus-title{display:block}.status{display:block;margin-top:5px}.count b{font-size:25px}.tip-grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topline"><span>SEOUL · BUSAN</span><span>2 人 · 7 天 · 2026</span></div>
+    <h1>首尔和釜山，出发。</h1>
+    <div class="subtitle">所有时间按当地时间显示；韩国 KST · UTC+9</div>
+
+    <section class="card focus" aria-live="polite">
+      <div class="eyebrow">此刻关注 · Next up</div>
+      <div class="focus-title"><strong id="nextTitle">加载中…</strong><span class="status" id="nextWhen"></span></div>
+      <div class="countdown">
+        <div class="count"><b id="dd">--</b><span>天</span></div>
+        <div class="count"><b id="hh">--</b><span>时</span></div>
+        <div class="count"><b id="mm">--</b><span>分</span></div>
+        <div class="count"><b id="ss">--</b><span>秒</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>7 日总览</h2><p>路线按城市切换颜色</p></div>
+      <div class="card map-card">
+        <svg viewBox="0 0 680 300" role="img" aria-label="首尔釜山手绘路线图">
+          <path d="M0 55 C110 25 170 90 250 55 S380 30 460 65 S570 36 680 62" fill="none" stroke="#dfe6db" stroke-width="4"/>
+          <path d="M0 250 C120 225 155 270 255 238 S410 254 505 222 S600 245 680 215" fill="none" stroke="#dfe6db" stroke-width="4"/>
+          <path d="M77 86 C153 104 212 133 295 136 C387 140 476 190 595 211" fill="none" stroke="#e8694f" stroke-width="8" stroke-linecap="round" stroke-dasharray="2 15"/>
+          <path d="M595 211 C530 180 466 166 405 166 C355 166 307 178 258 196" fill="none" stroke="#0d8f88" stroke-width="8" stroke-linecap="round" stroke-dasharray="2 15"/>
+          <path d="M258 196 C300 165 350 145 405 166 C465 187 525 197 595 211" fill="none" stroke="#4584bd" stroke-width="8" stroke-linecap="round" stroke-dasharray="2 15"/>
+          <path d="M595 211 C515 200 434 191 350 178 C285 168 180 135 77 86" fill="none" stroke="#f2b84b" stroke-width="8" stroke-linecap="round" stroke-dasharray="2 15"/>
+          <g font-family="ui-rounded, sans-serif" fill="#102c36">
+            <circle cx="77" cy="86" r="12" fill="#fffdf8" stroke="#e8694f" stroke-width="5"/><text x="55" y="59" font-size="18" font-weight="700">仁川</text><text x="27" y="110" font-size="12">9/25 抵达</text>
+            <circle cx="258" cy="196" r="12" fill="#fffdf8" stroke="#0d8f88" stroke-width="5"/><text x="212" y="226" font-size="18" font-weight="700">首尔</text><text x="202" y="244" font-size="12">9/25–28 · 30–10/1</text>
+            <circle cx="595" cy="211" r="12" fill="#fffdf8" stroke="#4584bd" stroke-width="5"/><text x="555" y="246" font-size="18" font-weight="700">釜山</text><text x="549" y="264" font-size="12">9/28–30</text>
+            <text x="330" y="104" font-size="12" fill="#e8694f">D1–D3</text><text x="478" y="155" font-size="12" fill="#0d8f88">D4</text><text x="333" y="198" font-size="12" fill="#4584bd">D5</text><text x="405" y="245" font-size="12" fill="#b17813">D6–D7</text>
+          </g>
+        </svg>
+        <div class="map-legend"><span><i class="dot" style="background:#e8694f"></i>抵达 / 首尔前段</span><span><i class="dot" style="background:#0d8f88"></i>首尔 → 釜山</span><span><i class="dot" style="background:#4584bd"></i>釜山活动</span><span><i class="dot" style="background:#f2b84b"></i>返首尔 / 回程</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>已确认与预约</h2><p>不显示私密订单字段</p></div>
+      <div class="booking-tabs" id="bookingFilters" role="tablist"></div>
+      <div class="card booking"><div class="booking-top"><h3>南方航空 · CZ339 / CZ3062</h3><span class="tag">已出票</span></div><div class="meta">9/25 17:20 广州 → 21:50 首尔　·　10/1 16:45 首尔 → 19:25 广州</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=Incheon+International+Airport+Terminal+1" target="_blank">首尔仁川国际机场 T1 ↗</a><div class="contact">航班时间为机场当地时间；建议国际航班提前 3 小时到达。</div></div></div>
+      <div class="card booking"><div class="booking-top"><h3>KTX · 首尔 ⇄ 釜山</h3><span class="tag">已出票</span></div><div class="meta">9/28 13:18 → 15:59　·　9/30 14:00 → 16:45　·　2 人</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=Seoul+Station+South+Korea" target="_blank">首尔站 ↗</a>　→　<a href="https://www.google.com/maps/search/?api=1&query=Busan+Station+South+Korea" target="_blank">釜山站 ↗</a><div class="contact">车站和座位以手机电子票为准；提前 30 分钟到站。</div></div></div>
+      <div class="card booking"><div class="booking-top"><h3>Mangrove Dongdaemun · 首尔</h3><span class="tag">已确认</span></div><div class="meta">9/25–9/28（3 晚）· 9/30–10/1（1 晚）</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=Mangrove+Dongdaemun+Seoul" target="_blank">30-23 Toegye-ro 83-gil, Jung-gu, Seoul ↗</a><div class="contact">公开电话：+82 10-5082-0903　·　东大门历史文化公园站步行约 3 分钟</div></div></div>
+      <div class="card booking"><div class="booking-top"><h3>Hotel Central Bay · 釜山</h3><span class="tag">已确认</span></div><div class="meta">9/28–9/30（2 晚）· 广安里海边</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Central+Bay+Busan" target="_blank">189 Gwanganhaebyeon-ro, Suyeong-gu, Busan 48303 ↗</a><div class="contact">公开电话：+82 51-982-9700</div></div></div>
+      <div class="card booking"><div class="booking-top"><h3>Seongsu Flagship Makeup · 圣水</h3><span class="tag">4 笔已预约</span></div><div class="meta">9/26（周六）13:30、14:30、16:30 × 2　·　2 人</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=1st+floor+EM+Tower+144+Seongsu-iro+Seongdong-gu+Seoul" target="_blank">1F, EM Tower, 144 Seongsu-iro, Seongdong-gu, Seoul ↗</a><div class="contact">公开电话：1811-9096　·　09:15–18:00，周日及节假日休息</div></div></div>
+      <div class="card booking"><div class="booking-top"><h3>海云台蓝线公园 · 天空胶囊</h3><span class="tag">已预约</span></div><div class="meta">9/29（周二）15:30–16:00 入场　·　尾浦方向　·　单程 2 人</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=Haeundae+Blueline+Park+Mipo+Station+Busan" target="_blank">尾浦站 ↗</a><div class="contact">预约时间是入场窗口，建议提前 20–30 分钟到达。</div></div></div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>日历行程</h2><p>点击标记日期查看当天安排</p></div>
+      <div class="calendar" id="calendar"></div>
+      <div class="day-modal" id="dayModal" aria-hidden="true"><div class="modal-panel"><div class="modal-head"><div><h2 id="modalTitle">当天行程</h2><p class="subtitle" id="modalSubtitle"></p></div><button class="modal-close" id="modalClose" aria-label="关闭">×</button></div><div class="modal-content" id="modalContent"></div></div></div>
+      <div class="days">
+        <details class="day" open><summary><div class="day-label"><span class="day-num">D1</span><span><b>9/25 · 周五</b><span class="day-date">　抵达首尔</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">仁川机场 → Mangrove Dongdaemun；深夜只安排入住和休息。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Incheon+International+Airport+Terminal+1&destination=Mangrove+Dongdaemun+Seoul" target="_blank">打开当日导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">17:20 CST</span><p>广州白云机场 T2 起飞<small>飞行约 3 小时 30 分</small></p></div><div class="event"><span class="time">21:50 KST</span><p>抵达首尔仁川 T1<small>入境、取行李、前往酒店；不再安排景点</small></p></div></div></div></details>
+        <details class="day"><summary><div class="day-label"><span class="day-num">D2</span><span><b>9/26 · 周六</b><span class="day-date">　圣水预约日</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">Mangrove → 圣水 EM Tower → 圣水周边 / 东大门。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Mangrove+Dongdaemun+Seoul&destination=1st+floor+EM+Tower+144+Seongsu-iro+Seongdong-gu+Seoul&waypoints=Seongsu+Seoul" target="_blank">打开当日多点导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">上午</span><p>酒店周边慢启动<small>不要安排远距离景点，给前一晚抵达留余量</small></p></div><div class="event"><span class="time">13:30 KST</span><p>圣水 Flagship Makeup<small class="reserve">需预约 · Daily</small></p></div><div class="event"><span class="time">14:30 KST</span><p>圣水 Flagship Makeup<small class="reserve">需预约 · Daily</small></p></div><div class="event"><span class="time">16:30 KST</span><p>圣水 Flagship Makeup × 2<small class="reserve">需预约 · SNS Profile</small></p></div><div class="event"><span class="time">晚上</span><p>圣水或东大门晚餐<small>按妆造结束时间灵活决定</small></p></div></div></div></details>
+        <details class="day"><summary><div class="day-label"><span class="day-num">D3</span><span><b>9/27 · 周日</b><span class="day-date">　市场、汝矣岛与演出</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">东大门 → 木洞射击场 → 汝矣岛 → 明宝艺术厅 → 东大门。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Mangrove+Dongdaemun+Seoul&destination=Mangrove+Dongdaemun+Seoul&waypoints=Mokdong+Shooting+Range+Seoul%7CThe+Hyundai+Seoul%7CMyungbo+Art+Hall+Seoul" target="_blank">打开当日多点导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">10:00</span><p>前往木洞射击场<small class="reserve">需提前核实周日营业 / 预约</small></p></div><div class="event"><span class="time">11:00–12:15</span><p>木洞射击场<small class="reserve">原行程项目，未见出票截图</small></p></div><div class="event"><span class="time">12:15–14:00</span><p>午餐</p></div><div class="event"><span class="time">14:00–17:30</span><p>可选：The Hyundai Seoul、汝矣岛汉江公园日落<small>二选一或按体力缩短</small></p></div><div class="event"><span class="time">17:45</span><p>晚餐 → 明宝艺术厅</p></div><div class="event"><span class="time">19:00–20:15</span><p>WILD WILD 猛男秀<small class="reserve">需提前订票；场次按周公布，出票后再锁定</small></p></div></div></div></details>
+        <details class="day"><summary><div class="day-label"><span class="day-num">D4</span><span><b>9/28 · 周一</b><span class="day-date">　首尔 → 釜山</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">Mangrove → 首尔站 → 釜山站 → Hotel Central Bay。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Mangrove+Dongdaemun+Seoul&destination=Hotel+Central+Bay+Busan&waypoints=Seoul+Station+South+Korea%7CBusan+Station+South+Korea" target="_blank">打开当日多点导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">上午</span><p>退房，前往首尔站<small>建议至少提前 30 分钟到站</small></p></div><div class="event"><span class="time">13:18 KST</span><p>KTX 首尔 → 釜山<small>已出票 · 2 人</small></p></div><div class="event"><span class="time">15:59 KST</span><p>抵达釜山，前往酒店<small>入住后安排广安里海边散步</small></p></div></div></div></details>
+        <details class="day"><summary><div class="day-label"><span class="day-num">D5</span><span><b>9/29 · 周二</b><span class="day-date">　海云台线</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">Hotel Central Bay → 海云台蓝线公园尾浦站 → 海云台 / 广安里。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Central+Bay+Busan&destination=Hotel+Central+Bay+Busan&waypoints=Haeundae+Blueline+Park+Mipo+Station+Busan%7CHaeundae+Beach+Busan" target="_blank">打开当日多点导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">上午–午后</span><p>海云台、青沙浦或尾浦周边<small>留出前往预约点的缓冲</small></p></div><div class="event"><span class="time">15:30–16:00</span><p>天空胶囊（尾浦方向）<small class="reserve">已预约 · 需提前到场</small></p></div><div class="event"><span class="time">傍晚</span><p>海云台海边 → 广安里晚餐</p></div></div></div></details>
+        <details class="day"><summary><div class="day-label"><span class="day-num">D6</span><span><b>9/30 · 周三</b><span class="day-date">　釜山 → 首尔</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">Hotel Central Bay → 釜山站 → 首尔站 → Mangrove Dongdaemun。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Central+Bay+Busan&destination=Mangrove+Dongdaemun+Seoul&waypoints=Busan+Station+South+Korea%7CSeoul+Station+South+Korea" target="_blank">打开当日多点导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">上午</span><p>广安里附近早餐、退房</p></div><div class="event"><span class="time">14:00 KST</span><p>KTX 釜山 → 首尔<small>已出票 · 2 人</small></p></div><div class="event"><span class="time">16:45 KST</span><p>抵达首尔，入住 Mangrove Dongdaemun<small>晚上仅安排东大门附近</small></p></div></div></div></details>
+        <details class="day"><summary><div class="day-label"><span class="day-num">D7</span><span><b>10/1 · 周四</b><span class="day-date">　返程</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">Mangrove Dongdaemun → 仁川机场 T1。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Mangrove+Dongdaemun+Seoul&destination=Incheon+International+Airport+Terminal+1" target="_blank">打开前往机场导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">上午</span><p>东大门附近早餐、整理行李<small>建议预留机场交通延误缓冲</small></p></div><div class="event"><span class="time">13:45 KST</span><p>最迟建议到达仁川 T1<small>国际航班提前约 3 小时</small></p></div><div class="event"><span class="time">16:45 KST</span><p>首尔 → 广州<small>南方航空 CZ3062</small></p></div></div></div></details>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>韩国入境电子申报</h2><p>建议 9/22 KST 起办理</p></div>
+      <div class="card steps">
+        <p>打开韩国官方 <a href="https://www.e-arrivalcard.go.kr/" target="_blank"><span class="keyline">e-Arrival Card 官方入口 ↗</span></a>，不要只依赖小红书二维码。</p>
+        <p>按护照信息填写个人资料、入境日期、航班号、韩国住宿地址和可接收邮件；两位旅客分别用自己的护照信息提交。</p>
+        <p>你们 9/25 抵达，按“抵韩前 3 天内”规则，最早建议 9/22（韩国时间）办理；页面实际开放时间和截止规则以官方系统为准。</p>
+        <p>提交完成后保存二维码/申报编号，并截图到手机离线相册；不要把护照号、二维码原图上传到公开旅行网页。</p>
+        <p>入境现场准备护照、登机牌和酒店地址；电子申报异常时，按机场现场指引改走人工或补填流程。</p>
+        <div class="risk"><b>不要混淆：</b>电子入境申报不等于签证，也不等于海关申报；是否需要签证、携带物品申报和检疫申报，仍按你的国籍与物品情况单独判断。</div>
+        <p class="source-note">笔记总结：提前 3 天提交、提交后保存二维码。官方入口：韩国 e-Arrival Card。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>免税店攻略</h2><p>先比价，再决定线上或线下</p></div>
+      <div class="card list">
+        <ul>
+          <li><b>线上免税 App：</b>先看新罗、新世界、乐天等 App，同款商品比较最终到手价；韩国本土美妆和部分国际护肤品通常更值得先看线上。</li>
+          <li><b>线下免税店：</b>适合线上断货、奢侈品、需要试用/确认库存的商品；笔记提到返点，但返点比例、门槛和是否取消资格要在下单前向返点方确认。</li>
+          <li><b>普通商场/门店：</b>买免税店没有的衣鞋、设计师品牌或需要试穿的商品；只有符合条件并标注 Tax Refund 的店才能办理退税，保留小票和退税单。</li>
+          <li><b>下单信息：</b>线上免税通常要填护照与出境航班；注册验证码要用能收短信的号码。建议至少提前一天完成，不要把“起飞前 3 小时仍可下单”当成稳定保证。</li>
+          <li><b>仁川 T1 提货：</b>先值机、托运行李，再过安检/出境检查；进入候机区后按 App 或机场屏幕确认提货柜台。笔记所述常见流程是靠近 43 号登机口、上二楼取号，再到对应品牌柜台取货，但柜台和登机口可能调整。</li>
+          <li><b>取货材料：</b>本人护照、登机牌、取货号码/凭证；下单人必须本人领取。提货袋在抵达最终目的地前不要拆封。</li>
+        </ul>
+        <div class="place"><a href="https://www.airport.kr/ap/en/shp/getDutyFreeInfo.do" target="_blank">仁川机场免税/提货官方信息 ↗</a><div class="contact">10/1 16:45 起飞，建议至少 13:45 抵达 T1；免税提货要在安检后完成，给排队和找柜台留足时间。</div></div>
+        <p class="source-note">以上购物顺序和提货动线综合了你提供的两篇小红书笔记；品牌截止时间、提货柜台和活动价以当天 App/机场公告为准。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>出发前检查</h2><p>出门前逐项过一遍</p></div>
+      <div class="card list"><ul><li>护照有效期、签证/入境资格、两段机票、酒店确认页、KTX 电子票已下载；重要页面同时截图。</li><li>9/22 起办理两人的电子入境申报，保存二维码或申报编号。</li><li>手机卡/eSIM 或漫游、充电器、充电宝、转换插头、备用电源已准备。</li><li>Visa/Master 卡、少量韩元现金、旅行保险和紧急联系人已保存。</li><li>常用药、处方或药品说明准备好；液体、充电宝和行李按航司规则整理。</li><li>轻薄外套、雨具、舒适运动鞋；釜山海边和天空胶囊注意防风。</li><li>本次没有租车安排，因此不需要为租车准备国际驾照；若临时租车再单独核查驾照与保险要求。</li></ul></div>
+    </section>
+
+    <section><div class="section-head"><h2>待办清单</h2><p>纯列表 · 不做浏览器勾选</p></div><div class="card list"><ul><li>9/22 KST 起完成两人的韩国电子入境申报，并把二维码/申报编号保存到离线相册。</li><li>确认 9/26 圣水 4 笔预约的具体服务顺序与到店要求。</li><li>核实木洞射击场 9/27 周日营业和是否需要预约。</li><li>确认 WILD WILD（明宝艺术厅）9/27 场次是否已出票，并保存入场凭证。</li><li>免税 App 提前注册、绑定可收验证码的号码，比较最终价后再下单。</li><li>下载韩国离线地图；Naver Map 按钮需要网络，离线时使用已保存地点。</li><li>准备 KTX 手机电子票，提前确认车站站台和检票信息。</li><li>确认机场到酒店及酒店到车站的交通方式和行李安排。</li></ul><div class="risk"><b>当前风险：</b>9/27 木洞射击场周日营业尚未核实；WILD WILD 公开资料显示场次按周公布，目前未见出票凭证；9/26 的连续预约间隔紧，需要按商家实际服务时长确认是否会迟到。</div></div></section>
+
+    <section><div class="section-head"><h2>实用贴士</h2><p>到现场再看这一栏</p></div><div class="tip-grid"><div class="card tip"><h3>时间</h3><p>韩国比广州快 1 小时。航班和 KTX 已按当地时间记录。</p></div><div class="card tip"><h3>导航</h3><p>地点按钮统一跳转 Naver Map；路线按钮会带上当天地点，打开后按顺序设置出发、途经和目的地。</p></div><div class="card tip"><h3>天气</h3><p>9 月末仍可能闷热或有雨，海边活动准备轻薄外套和雨具。</p></div><div class="card tip"><h3>预约</h3><p>妆造、演出、天空胶囊均按预约时间走，留出换乘和找入口的缓冲。</p></div></div></section>
+    <div class="foot">公开手册不包含订单号、个人电话、邮箱、二维码、座位号或房间号。</div>
+  </main>
+  <script>
+    const events = [
+      { at:'2026-09-25T17:20:00+08:00', title:'广州白云机场 T2 起飞', label:'9/25 · 17:20 CST' },
+      { at:'2026-09-26T13:30:00+09:00', title:'圣水 Flagship Makeup', label:'9/26 · 13:30 KST' },
+      { at:'2026-09-28T13:18:00+09:00', title:'KTX 首尔 → 釜山', label:'9/28 · 13:18 KST' },
+      { at:'2026-09-29T15:30:00+09:00', title:'天空胶囊入场', label:'9/29 · 15:30 KST' },
+      { at:'2026-09-30T14:00:00+09:00', title:'KTX 釜山 → 首尔', label:'9/30 · 14:00 KST' },
+      { at:'2026-10-01T16:45:00+09:00', title:'首尔仁川 T1 起飞', label:'10/1 · 16:45 KST' }
+    ];
+    const $ = id => document.getElementById(id);
+    function tick() {
+      const now = Date.now();
+      const next = events.find(e => new Date(e.at).getTime() > now) || events[events.length - 1];
+      const delta = Math.max(0, new Date(next.at).getTime() - now);
+      const total = Math.floor(delta / 1000);
+      $('nextTitle').textContent = next.title;
+      $('nextWhen').textContent = next.label;
+      $('dd').textContent = String(Math.floor(total / 86400)).padStart(2,'0');
+      $('hh').textContent = String(Math.floor(total % 86400 / 3600)).padStart(2,'0');
+      $('mm').textContent = String(Math.floor(total % 3600 / 60)).padStart(2,'0');
+      $('ss').textContent = String(total % 60).padStart(2,'0');
+    }
+    document.querySelectorAll('a[href*="google.com/maps"]').forEach(a => {
+      const old = new URL(a.href);
+      const parts = [...old.searchParams.entries()].flatMap(([key, value]) => key === 'api' ? [] : [value]);
+      const query = encodeURIComponent(parts.join(' → '));
+      a.href = 'https://map.naver.com/p/search/' + query;
+      if (a.classList.contains('route-btn')) a.textContent = '在 Naver Map 打开当日路线 ↗';
+    });
+    const bookingFilters = [
+      ['all','全部'], ['flight','机票'], ['train','车票'], ['hotel','酒店'], ['ticket','门票'], ['other','其他']
+    ];
+    const bookingCards = [...document.querySelectorAll('.booking')];
+    const flightCard = bookingCards.find(card => card.querySelector('h3')?.textContent.includes('南方航空'));
+    if (flightCard) {
+      flightCard.querySelector('.meta').innerHTML = '<div class="ticket-rows"><div class="ticket-row"><b>去程 · 9/25</b><span>17:20 广州白云 T2 → 21:50 首尔仁川 T1</span></div><div class="ticket-row"><b>回程 · 10/1</b><span>16:45 首尔仁川 T1 → 19:25 广州白云 T2</span></div></div><div class="seller">购买人：toki　·　平台：同程旅行</div>';
+    }
+    const trainCard = bookingCards.find(card => card.querySelector('h3')?.textContent.includes('KTX'));
+    if (trainCard) {
+      trainCard.querySelector('.meta').innerHTML = '<div class="ticket-rows"><div class="ticket-row"><b>去程 · 9/28</b><span>13:18 首尔站 → 15:59 釜山站</span></div><div class="ticket-row"><b>回程 · 9/30</b><span>14:00 釜山站 → 16:45 首尔站</span></div></div><div class="seller">购买人：toki　·　平台：微信小程序 Korail 火车</div>';
+    }
+    const sellerInfo = [
+      ['Mangrove Dongdaemun','购买人：EAN　·　平台：去哪儿旅行（9/25–9/28）<br>购买人：toki　·　平台：Agoda（9/30–10/1）'],
+      ['Hotel Central Bay','购买人：EAN　·　平台：Agoda'],
+      ['海云台蓝线公园','购买人：toki　·　平台：官网 <a href="https://www.bluelinepark.com/chn/" target="_blank">bluelinepark.com ↗</a>']
+    ];
+    sellerInfo.forEach(([name, html]) => {
+      const card = bookingCards.find(item => item.querySelector('h3')?.textContent.includes(name));
+      if (card) { const seller = document.createElement('div'); seller.className = 'seller'; seller.innerHTML = html; card.querySelector('.meta').insertAdjacentElement('afterend', seller); }
+    });
+    const makeupCard = bookingCards.find(card => card.querySelector('h3')?.textContent.includes('Seongsu Flagship Makeup'));
+    if (makeupCard) {
+      makeupCard.querySelector('.meta').innerHTML = '<div class="appointment-list"><div class="appointment-row"><b>13:30</b><span>化妆 <span class="qr-slot">· 二维码待补</span></span></div><div class="appointment-row"><b>14:30</b><span>化妆 <span class="qr-slot">· 二维码待补</span></span></div><div class="appointment-row"><b>16:30 × 2</b><span>拍照 <span class="qr-slot">· 两张二维码待补</span></span></div></div><div class="seller">购买人：请补充　·　平台：预约页面</div>';
+    }
+    const categoryOf = card => {
+      if (card.dataset.category) return card.dataset.category;
+      const title = card.querySelector('h3')?.textContent || '';
+      if (title.includes('南方航空')) return 'flight';
+      if (title.includes('KTX')) return 'train';
+      if (title.includes('Mangrove') || title.includes('Central Bay')) return 'hotel';
+      if (title.includes('蓝线公园')) return 'ticket';
+      return 'other';
+    };
+    bookingCards.forEach(card => { card.dataset.category = categoryOf(card); });
+    const bookingFilterEl = $('bookingFilters');
+    bookingFilters.forEach(([value, label]) => {
+      const button = document.createElement('button');
+      button.className = 'booking-tab' + (value === 'all' ? ' active' : '');
+      button.type = 'button'; button.dataset.filter = value; button.textContent = label;
+      button.addEventListener('click', () => {
+        bookingFilterEl.querySelectorAll('.booking-tab').forEach(item => item.classList.toggle('active', item === button));
+        bookingCards.forEach(card => card.classList.toggle('is-hidden', value !== 'all' && card.dataset.category !== value));
+      });
+      bookingFilterEl.appendChild(button);
+    });
+
+    const calendarDays = [
+      ['2026-09-25','D1','抵达首尔'], ['2026-09-26','D2','圣水预约'], ['2026-09-27','D3','市场、汝矣岛与演出'],
+      ['2026-09-28','D4','首尔 → 釜山'], ['2026-09-29','D5','海云台线'], ['2026-09-30','D6','釜山 → 首尔'], ['2026-10-01','D7','返程']
+    ];
+    const calendarMap = new Map(calendarDays.map(item => [item[0], item]));
+    const dayDetails = [...document.querySelectorAll('.days .day')];
+    const weekdays = ['一','二','三','四','五','六','日'];
+    function monthHtml(year, month) {
+      const monthItems = calendarDays.filter(item => item[0].startsWith(`${year}-${String(month).padStart(2,'0')}`));
+      const first = new Date(Date.UTC(year, month - 1, 1));
+      const offset = (first.getUTCDay() + 6) % 7;
+      const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+      let cells = weekdays.map(day => `<div class="weekday">${day}</div>`).join('');
+      for (let i = 0; i < offset; i++) cells += '<div class="calendar-cell empty"></div>';
+      for (let day = 1; day <= daysInMonth; day++) {
+        const date = `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+        const item = calendarMap.get(date);
+        cells += item ? `<button class="calendar-cell trip" type="button" data-date="${date}"><span class="date">${day}</span><span class="day-code">${item[1]}</span><span class="day-name">${item[2]}</span></button>` : `<div class="calendar-cell"><span class="date">${day}</span></div>`;
+      }
+      return `<div class="month"><div class="month-title"><strong>${year} 年 ${month} 月</strong><span>${monthItems.length} 天行程</span></div><div class="calendar-grid">${cells}</div></div>`;
+    }
+    $('calendar').innerHTML = monthHtml(2026, 9) + monthHtml(2026, 10);
+    const modal = $('dayModal');
+    const openDay = date => {
+      const item = calendarMap.get(date);
+      const index = calendarDays.findIndex(entry => entry[0] === date);
+      const source = dayDetails[index];
+      if (!item || !source) return;
+      $('modalTitle').textContent = `${item[1]} · ${date.slice(5).replace('-','/')} ${item[2]}`;
+      $('modalSubtitle').textContent = '韩国当地时间 · KST / UTC+9';
+      $('modalContent').innerHTML = source.querySelector('.day-body').outerHTML;
+      modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('modal-open');
+    };
+    $('calendar').addEventListener('click', event => { const button = event.target.closest('[data-date]'); if (button) openDay(button.dataset.date); });
+    const closeModal = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('modal-open'); };
+    $('modalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
+
+    const todoHeading = [...document.querySelectorAll('h2')].find(title => title.textContent.trim() === '待办清单');
+    if (todoHeading) {
+      const todoSection = todoHeading.closest('section');
+      const todoList = todoSection.querySelector('ul');
+      todoSection.querySelector('.section-head p').textContent = '每台设备独立保存';
+      todoList.className = 'todo-list';
+      const todoKey = 'seoul-busan-trip-todos-v1';
+      let saved = {};
+      try { saved = JSON.parse(localStorage.getItem(todoKey) || '{}'); } catch (error) { saved = {}; }
+      todoList.querySelectorAll('li').forEach((item, index) => {
+        const text = item.textContent.trim();
+        item.innerHTML = `<label class="todo-label"><input type="checkbox" data-todo="${index}" ${saved[index] ? 'checked' : ''}><span>${text}</span></label>`;
+      });
+      todoList.addEventListener('change', event => {
+        if (!event.target.matches('[data-todo]')) return;
+        saved[event.target.dataset.todo] = event.target.checked;
+        localStorage.setItem(todoKey, JSON.stringify(saved));
+      });
+    }
+    tick(); setInterval(tick, 1000);
+    const hour = Number(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Seoul',hour:'numeric',hour12:false}).format(new Date()));
+    if (hour >= 19 || hour < 6) document.documentElement.style.setProperty('--paper','#e8eeec');
+  </script>
+</body>
+</html>
