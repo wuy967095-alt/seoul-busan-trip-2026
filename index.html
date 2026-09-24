@@ -90,6 +90,15 @@
     .pickup-points { margin:0; padding-left:19px; font-size:13px; line-height:1.7; }
     .pickup-points li { margin:4px 0; padding-left:2px; }
     .pickup-points li::marker { color:var(--teal); }
+    .food-tabs { display:flex; gap:6px; overflow:auto; margin:0 0 10px; padding-bottom:2px; }
+    .food-tab { border:1px solid var(--line); background:var(--card); color:var(--muted); border-radius:99px; padding:7px 12px; font:inherit; font-size:12px; white-space:nowrap; cursor:pointer; }
+    .food-tab.active { background:var(--ink); border-color:var(--ink); color:#fff; }
+    .food-card { padding:13px 15px; background:var(--card); border:1px solid var(--line); border-radius:8px; }
+    .food-card.is-hidden { display:none; }
+    .food-card b { display:block; font-size:15px; }
+    .food-card .food-cn { color:var(--muted); font-size:12px; margin:3px 0; }
+    .food-card .food-address { color:var(--muted); font-size:11px; line-height:1.5; }
+    .food-card a { display:inline-block; margin-top:7px; color:var(--teal); font-size:11px; font-weight:700; text-decoration:none; }
     .source-note { margin:8px 0 0; color:var(--muted); font-size:11px; }
     .booking-tabs { display:flex; gap:6px; overflow:auto; margin:0 0 10px; padding-bottom:2px; }
     .booking-tab { border:1px solid var(--line); background:var(--card); color:var(--muted); border-radius:99px; padding:7px 12px; font:inherit; font-size:12px; white-space:nowrap; cursor:pointer; }
@@ -218,10 +227,23 @@
       <div class="card booking"><div class="booking-top"><h3>Hotel Central Bay · 釜山</h3><span class="tag">已确认</span></div><div class="meta">9.28–9.30（2 晚）· 广安里海边</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Central+Bay+Busan" target="_blank">189 Gwanganhaebyeon-ro, Suyeong-gu, Busan 48303 ↗</a><div class="contact">公开电话：+82 51-982-9700</div></div></div>
       <div class="card booking"><div class="booking-top"><h3>Seongsu Flagship Makeup · 圣水</h3><span class="tag">4 笔已预约</span></div><div class="meta">9.26（周六）13:30、14:30、16:30 × 2　·　2 人</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=1st+floor+EM+Tower+144+Seongsu-iro+Seongdong-gu+Seoul" target="_blank">1F, EM Tower, 144 Seongsu-iro, Seongdong-gu, Seoul ↗</a><div class="contact">公开电话：1811-9096　·　09:15–18:00，周日及节假日休息</div></div></div>
       <div class="card booking"><div class="booking-top"><h3>海云台蓝线公园 · 天空胶囊</h3><span class="tag">已预约</span></div><div class="meta">9.29（周二）15:30–16:00 入场　·　尾浦方向　·　单程 2 人</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=Haeundae+Blueline+Park+Mipo+Station+Busan" target="_blank">尾浦站 ↗</a><div class="contact">预约时间是入场窗口，建议提前 20–30 分钟到达。</div></div></div>
-      <div class="card booking" data-category="show"><div class="booking-top"><h3>WILD WILD · 明宝艺术厅</h3><span class="tag">已预约</span></div><div class="meta">9.27（周日）15:00 KST　·　2 人</div><div class="place"><a href="https://map.naver.com/p/search/Myungbo%20Art%20Hall%20Seoul" target="_blank">明宝艺术厅 ↗</a><div class="contact">凭护照和订单号入场；订单号不放入公开页面。</div></div></div>
+      <div class="card booking" data-category="show"><div class="booking-top"><h3>WILD WILD · 明宝艺术厅</h3><span class="tag">已预约</span></div><div class="meta">9.27（周日）15:00 KST　·　2 人</div><div class="place"><a href="https://map.naver.com/p/search/Myungbo%20Art%20Hall%20Seoul" target="_blank">明宝艺术厅 ↗</a><div class="contact">凭护照和订单号入场；订单号不放入公开页面。</div></div><div class="seller"><span class="seller-line">购买人：EAN　·　平台：携程</span></div></div>
     </section>
 
-    <section><div class="section-head"><h2>待办清单</h2><p>每台设备独立保存</p></div><div class="card list"><ul><li>9/22 KST 起完成两人的韩国电子入境申报，并把二维码/申报编号保存到离线相册。</li><li>免税 App 提前注册、绑定可收验证码的号码，比较最终价后再下单。</li><li>下载韩国离线地图；Naver Map 按钮需要网络，离线时使用已保存地点。</li><li>准备 KTX 手机电子票，提前确认车站站台和检票信息。</li></ul><div class="risk"><b>行程确认：</b>木洞射击场 9/27 周日营业 09:30–18:00，午休 12:00–13:00。</div></div></section>
+    <section>
+      <div class="section-head"><h2>首尔美食地图</h2><p>按区域切换 · 点击 Naver Map 导航</p></div>
+      <div class="food-tabs" id="foodFilters" role="tablist"></div>
+      <div class="food-list">
+        <div class="food-card" data-food-region="hannam"><b>한남동 감자탕 본점</b><div class="food-cn">主打：감자탕，猪脊骨土豆汤</div><div class="food-address">서울 용산구 대사관로 73 1층</div><a href="https://naver.me/GlJBHIx5" target="_blank" rel="noopener">导航去 한남동 감자탕 본점 ↗</a></div>
+        <div class="food-card" data-food-region="gangnam"><b>뽕족 강남역본점</b><div class="food-cn">主打：족발，韩式猪蹄 / 猪脚料理</div><div class="food-address">서울 강남구 테헤란로4길 15 메가시티오피스텔 1층</div><a href="https://naver.me/xHEz8kJp" target="_blank" rel="noopener">导航去 뽕족 강남역본점 ↗</a></div>
+        <div class="food-card" data-food-region="gangnam"><b>더오다리집 강남</b><div class="food-cn">主打：산낙지，活章鱼等韩式海鲜料理</div><div class="food-address">서울 강남구 봉은사로30길 74 1층</div><a href="https://naver.me/GGGD3Y1K" target="_blank" rel="noopener">导航去 더오다리집 강남 ↗</a></div>
+        <div class="food-card" data-food-region="yeongdeungpo"><b>한신포차 영등포역점</b><div class="food-cn">主打：매운 닭발，辣鸡爪；韩式下酒菜</div><div class="food-address">서울 영등포구 영중로10길 35</div><a href="https://naver.me/5o0HmhMM" target="_blank" rel="noopener">导航去 한신포차 영등포역점 ↗</a></div>
+        <div class="food-card" data-food-region="kondae"><b>한신포차 건대점</b><div class="food-cn">主打：매운 닭발，辣鸡爪；韩式下酒菜</div><div class="food-address">서울 광진구 동일로22길 69-3</div><a href="https://naver.me/56XkBYfK" target="_blank" rel="noopener">导航去 한신포차 건대점 ↗</a></div>
+        <div class="food-card" data-food-region="dongdaemun"><b>두끼 현대시티아울렛동대문점</b><div class="food-cn">主打：自助年糕火锅，可自选酱料、年糕和配菜</div><div class="food-address">서울 중구 장충단로13길 20 9층</div><a href="https://naver.me/x6JdE7Qy" target="_blank" rel="noopener">导航去 두끼 현대시티아울렛동대문점 ↗</a></div>
+      </div>
+    </section>
+
+    <section><div class="section-head"><h2>待办清单</h2><p>每台设备独立保存</p></div><div class="card list"><ul><li>免税 App 提前注册、绑定可收验证码的号码，比较最终价后再下单。</li><li>下载韩国离线地图；Naver Map 按钮需要网络，离线时使用已保存地点。</li><li>准备 KTX 手机电子票，提前确认车站站台和检票信息。</li></ul><div class="risk"><b>行程确认：</b>木洞射击场 9/27 周日营业 09:30–18:00，午休 12:00–13:00。</div></div></section>
 
     <section>
       <div class="section-head"><h2>7 天速览</h2><p>点击日期查看当天安排</p></div>
@@ -235,19 +257,6 @@
         <details class="day"><summary><div class="day-label"><span class="day-num">D5</span><span><b>9/29 · 周二</b><span class="day-date">　海云台线</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">Hotel Central Bay → 海云台蓝线公园尾浦站 → 海云台 / 广安里。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Central+Bay+Busan&destination=Hotel+Central+Bay+Busan&waypoints=Haeundae+Blueline+Park+Mipo+Station+Busan%7CHaeundae+Beach+Busan" target="_blank">打开当日多点导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">上午–午后</span><p>海云台、青沙浦或尾浦周边<small>留出前往预约点的缓冲</small></p></div><div class="event"><span class="time">15:30–16:00</span><p>天空胶囊（尾浦方向）<small class="reserve">已预约 · 需提前到场</small></p></div><div class="event"><span class="time">傍晚</span><p>海云台海边 → 广安里晚餐</p></div></div></div></details>
         <details class="day"><summary><div class="day-label"><span class="day-num">D6</span><span><b>9/30 · 周三</b><span class="day-date">　釜山 → 首尔</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">Hotel Central Bay → 釜山站 → 首尔站 → Mangrove Dongdaemun。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Central+Bay+Busan&destination=Mangrove+Dongdaemun+Seoul&waypoints=Busan+Station+South+Korea%7CSeoul+Station+South+Korea" target="_blank">打开当日多点导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">上午</span><p>广安里附近早餐、退房</p></div><div class="event"><span class="time">14:00 KST</span><p>KTX 釜山 → 首尔<small>已出票 · 2 人</small></p></div><div class="event"><span class="time">16:45 KST</span><p>抵达首尔，入住 Mangrove Dongdaemun<small>晚上仅安排东大门附近</small></p></div></div></div></details>
         <details class="day"><summary><div class="day-label"><span class="day-num">D7</span><span><b>10/1 · 周四</b><span class="day-date">　返程</span></span></div><span class="chev">⌄</span></summary><div class="day-body"><div class="day-map"><p class="route-note">Mangrove Dongdaemun → 仁川机场 T1。</p><a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Mangrove+Dongdaemun+Seoul&destination=Incheon+International+Airport+Terminal+1" target="_blank">打开前往机场导航 ↗</a></div><div class="timeline"><div class="event"><span class="time">上午</span><p>东大门附近早餐、整理行李<small>建议预留机场交通延误缓冲</small></p></div><div class="event"><span class="time">13:45 KST</span><p>最迟建议到达仁川 T1<small>国际航班提前约 3 小时</small></p></div><div class="event"><span class="time">16:45 KST</span><p>首尔 → 广州<small>南方航空 CZ3062</small></p></div></div></div></details>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-head"><h2>韩国入境电子申报</h2><p>建议 9/22 KST 起办理</p></div>
-      <div class="card steps">
-        <p>打开韩国官方 <a href="https://www.e-arrivalcard.go.kr/" target="_blank"><span class="keyline">e-Arrival Card 官方入口 ↗</span></a>，不要只依赖小红书二维码。</p>
-        <p>按护照信息填写个人资料、入境日期、航班号、韩国住宿地址和可接收邮件；两位旅客分别用自己的护照信息提交。</p>
-        <p>你们 9/25 抵达，按“抵韩前 3 天内”规则，最早建议 9/22（韩国时间）办理；页面实际开放时间和截止规则以官方系统为准。</p>
-        <p>提交完成后保存二维码/申报编号，并截图到手机离线相册；不要把护照号、二维码原图上传到公开旅行网页。</p>
-        <p>入境现场准备护照、登机牌和酒店地址；电子申报异常时，按机场现场指引改走人工或补填流程。</p>
-        <div class="risk"><b>不要混淆：</b>电子入境申报不等于签证，也不等于海关申报；是否需要签证、携带物品申报和检疫申报，仍按你的国籍与物品情况单独判断。</div>
-        <p class="source-note">笔记总结：提前 3 天提交、提交后保存二维码。官方入口：韩国 e-Arrival Card。</p>
       </div>
     </section>
 
@@ -299,7 +308,7 @@
     if (calendarSection && focusSection) focusSection.after(calendarSection);
     const main = document.querySelector('main');
     const foot = main?.querySelector('.foot');
-    const sectionOrder = ['7 天速览','已确认与预约','韩国入境电子申报','机场到酒店','机场提货攻略','出发前检查','待办清单','境外险与紧急电话'];
+    const sectionOrder = ['7 天速览','已确认与预约','首尔美食地图','机场到酒店','机场提货攻略','出发前检查','待办清单','境外险与紧急电话'];
     const orderedSections = sectionOrder.map(title => [...main.querySelectorAll('section')].find(section => section.querySelector('h2')?.textContent.trim() === title)).filter(Boolean);
     if (main && foot) orderedSections.forEach(section => main.insertBefore(section, foot));
     function tick() {
@@ -400,6 +409,24 @@
       bookingFilterEl.appendChild(button);
     });
     bookingCards.forEach(card => card.classList.toggle('is-hidden', card.dataset.category !== 'flight'));
+
+    const foodRegions = [
+      ['hannam','汉南洞 · 한남동'], ['gangnam','江南 · 강남'], ['yeongdeungpo','永登浦 · 영등포'],
+      ['kondae','建大 · 건대'], ['dongdaemun','东大门 · 동대문']
+    ];
+    const foodCards = [...document.querySelectorAll('.food-card')];
+    const foodFilterEl = $('foodFilters');
+    foodRegions.forEach(([value, label]) => {
+      const button = document.createElement('button');
+      button.className = 'food-tab' + (value === 'dongdaemun' ? ' active' : '');
+      button.type = 'button'; button.dataset.foodFilter = value; button.textContent = label;
+      button.addEventListener('click', () => {
+        foodFilterEl.querySelectorAll('.food-tab').forEach(item => item.classList.toggle('active', item === button));
+        foodCards.forEach(card => card.classList.toggle('is-hidden', card.dataset.foodRegion !== value));
+      });
+      foodFilterEl.appendChild(button);
+    });
+    foodCards.forEach(card => card.classList.toggle('is-hidden', card.dataset.foodRegion !== 'dongdaemun'));
 
     const calendarDays = [
       ['2026-09-25','D1','抵达首尔'], ['2026-09-26','D2','圣水预约'], ['2026-09-27','D3','上午射击 · 下午演出'],
